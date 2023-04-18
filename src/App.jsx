@@ -1,5 +1,6 @@
 import Promo from "./components/Promo/Promo";
 import Card from './components/Card';
+import { Header, Footer } from "./components/General";
 import cardsData from './assets/data.json';
 
 const sizes = ['sm', 'lg', 'md']
@@ -13,19 +14,18 @@ const rand = (n) => Math.floor(Math.random() * n);
 let n = 8;
 while (n--) {
     adds.push({
-        text: `${text[rand(text.length)].slice(0,8)} ${text[rand(text.length)]} ${text[rand(text.length)]}`,
+        text: `${text[rand(text.length)].slice(0, 8)} ${text[rand(text.length)]} ${text[rand(text.length)]}`,
         pic: !!Math.round(Math.random()),
         sizes: sizes[rand(sizes.length)]
     })
 }
 
 
-
-
 const App = () => {
+    const user = localStorage.getItem('bandUser')
     return (
         <div>
-
+            <Header user={user}/>
             <div className="container">
                 {/*                 
                 <Promo text="container" type="lg"/>
@@ -44,9 +44,10 @@ const App = () => {
                     name={el.name}
                     price={el.price}
                 />)}
-                {adds.map((el,i) => <Promo key={i}{...el} type={el.sizes} />)}
+                {adds.map((el, i) => <Promo key={i}{...el} type={el.sizes} />)}
 
             </div>
+            <Footer />
         </div>
     )
 }
