@@ -1,4 +1,6 @@
 import Logo from './Logo';
+import { Link } from "react-router-dom";
+import {Folder2Open, Star, Cart3} from "react-bootstrap-icons";
 
 const Footer = ()=> {
     return(
@@ -8,9 +10,10 @@ const Footer = ()=> {
                 <div>©{new Date().getFullYear()}</div>
             </div>
             <div className='footer_cell footer_menu'>
-                <a href=''>Каталог</a>
-                <a href=''>Избранное</a>
-                <a href=''>Корзина</a>
+            <Link to="/catalog" title="Каталог" ><Folder2Open/></Link>
+            <Link to="/" title="Избранное"><Star/></Link>
+            <Link to="/" title="Корзина"><Cart3/></Link>
+            <Link to='/draft'>Черновик</Link>
             </div>
         </footer>
     )

@@ -1,4 +1,5 @@
 import "./style.css";
+
 const Promo = (props) => {
     // props-это объeкт, можно передать разные свойства
     let name = "promo";

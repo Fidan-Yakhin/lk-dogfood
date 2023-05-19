@@ -1,54 +1,122 @@
-import Promo from "./components/Promo/Promo";
-import Card from './components/Card';
+import { useState, useEffect } from "react";
+import { Routes, Route } from 'react-router-dom';
+import Ctx from "./context"
+
 import { Header, Footer } from "./components/General";
-import cardsData from './assets/data.json';
-
-const sizes = ['sm', 'lg', 'md']
-const adds = []
-
-let text = 'Основной целью полёта было исследование влияния на организм животных и других биологических объектов факторов космического полёта: перегрузка, длительная невесомость, переход от перегрузок к невесомости и обратно, изучение действия космической радиации на животных и растительные организмы, на состояние их жизнедеятельности и наследственность, отработка систем, обеспечивающих жизнедеятельность человека, безопасность полёта и благополучное возвращение на Землю. Также было проведено несколько медико-биологических экспериментов и научных исследований космического пространства'
-text = text.match(/[^\s,.]+/g);
-
-const rand = (n) => Math.floor(Math.random() * n);
-
-let n = 8;
-while (n--) {
-    adds.push({
-        text: `${text[rand(text.length)].slice(0, 8)} ${text[rand(text.length)]} ${text[rand(text.length)]}`,
-        pic: !!Math.round(Math.random()),
-        sizes: sizes[rand(sizes.length)]
-    })
-}
-
+import Modal from "./components/Modal";
+import Search from "./components/Search";
+import Draft from "./pages/Draft";
+import Main from "./pages/Main";
+import Catalog from './pages/Catalog';
+import Profile from "./pages/Profile";
+import Product from "./pages/Product";
+import Favorites from "./pages/Favorites";
 
 const App = () => {
-    const user = localStorage.getItem('bandUser')
-    return (
-        <div>
-            <Header user={user}/>
-            <div className="container">
-                {/*                 
-                <Promo text="container" type="lg"/>
-                <Promo text="Doggy" type="lg" />
-                <Promo text="4" pic={true}/>
-                <Promo />
-                <Promo text="7" type="sm" /> */}
-                {/* <Card
-                    img={cardsData[0].pictures}
-                    name={cardsData[0].name}
-                    price={cardsData[0].price}
-                /> */}
-                {cardsData.map((el, i) => <Card
-                    key={i}
-                    img={el.pictures}
-                    name={el.name}
-                    price={el.price}
-                />)}
-                {adds.map((el, i) => <Promo key={i}{...el} type={el.sizes} />)}
+    // let key = "be9b1151be0141c5b61c218f2f2e54ce"
+    'https://newsapi.org/v2/everything?apiKey=be9b1151be0141c5b61c218f2f2e54ce&q=dogs'
+    const [user, setUser] = useState(localStorage.getItem('bandUser'))
+    const [token, setToken] = useState(localStorage.getItem('bandToken'))
+    const [userId, setUserId] = useState(localStorage.getItem('bandId'))
+    const [serverGoods, setServerGoods] = useState();
+    const [goods, setGoods] = useState(serverGoods);
+    const [news, setNews] = useState([]);
+    useEffect(() => {
+        fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=be9b1151be0141c5b61c218f2f2e54ce")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setNews(data.articles)
+            })
+    }, [])
+    const [modalActive, setModalActive] = useState(false);
 
-            </div>
-            <Footer />
-        </div>
+
+    useEffect(() => {
+        if (token) {
+            fetch('https://api.react-learning.ru/products', {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setServerGoods(data.products);
+                })
+        }
+    }, [token])
+
+    useEffect(() => {
+        if (!goods.length) {
+        console.log("=)")
+        setGoods(serverGoods);
+        }
+    }, [serverGoods]);
+    // useEffect(() => {
+    //     console.log("dd")
+    // }, [modalActive]);
+
+    useEffect(() => {
+        console.log("Change")
+        if (user) {
+            setToken(localStorage.getItem('bandToken'))
+            setUserId(localStorage.getItem('bandId'))
+        } else {
+            setToken("");
+            setUserId('');
+        }
+        console.log('u', user);
+    }, [user]);
+
+    const ctxVal = {
+        goods,
+        setGoods,
+        news
+    }
+
+    return (
+        <Ctx.Provider value={ctxVal}>
+            <Header 
+                user={user} 
+                setModalActive={setModalActive}
+                serverGoods={serverGoods}
+            />
+            <main>
+                <Search arr={serverGoods} />
+                {/* 
+                    SPA - Single Page Application (одностраничное)
+                */}
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/catalog" element={<Catalog
+                        setServerGoods={setServerGoods}
+                    />}/>
+                    <Route path="/favorites" element={<Favorites 
+                        goods={goods}
+                        userId={userId}
+                        setServerGoods={setServerGoods}
+                    />}/>
+                    <Route path="/draft" element={<Draft/>}/>
+                    <Route path="/profile" element={
+                        <Profile user={user} setUser={setUser} color="yellow"/>
+                    }/>
+                    <Route path="/product/:id" element={<Product/>}/>
+                </Routes>
+                {/* 
+                    /v2/:gr/posts/likes/:id
+                    /v2/group-12/posts/likes/83745613476812
+                    /v2/group-9/posts/likes/768883746527383
+                */}
+            </main>
+            <Footer/>
+            <Modal 
+                active={modalActive} 
+                setActive={setModalActive}
+                setUser={setUser}
+            />
+        </Ctx.Provider>
     )
 }
+
 export default App;

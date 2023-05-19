@@ -10,7 +10,7 @@
 }
 
 header{
-    background-color: silver;
+    background-color: rgb(207, 218, 58);
     color: #000;
     display: flex;
     align-items: center;
@@ -20,4 +20,21 @@ header{
 .header_menu{
     display:flex;
     gap: 20px;
+}
+.badge-el{
+  position: relative;
+}
+.badge-item {
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: slateblue;
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: .75em;
+    top: -50%;
+    right: -50%;
 }
