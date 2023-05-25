@@ -7,7 +7,7 @@ const Search = ({arr, upd}) => {
 	const {setGoods} = useContext(Ctx);
 	// let text = "Corn";
 	const [text, setText] = useState("");
-	const [quantity, setQuantity] = useState(arr.length);
+	const [quantity, setQuantity] = useState("arr.length");
 	/*
 		useState = то, что создает пару из переменной и функции, которая ее изменяет
 
