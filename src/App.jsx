@@ -1,3 +1,4 @@
+import React from "react";
 import {useState, useEffect} from "react";
 import {Routes, Route} from "react-router-dom";
 
@@ -35,8 +36,8 @@ import Favorites from "./pages/Favorites";
 import Add from './pages/AddProduct';
 
 const App = () => {
-    // let key = "6c7fc5e6a754429ab47063a1b1a54774"
-    "https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
+    // let key = "be9b1151be0141c5b61c218f2f2e54ce"
+    "https://newsapi.org/v2/everything?apiKey=be9b1151be0141c5b61c218f2f2e54ce&q=dogs"
     const [user, setUser] = useState(localStorage.getItem("rockUser"));
     const [token, setToken] = useState(localStorage.getItem("rockToken"));
     const [userId, setUserId] = useState(localStorage.getItem("rockId"));
@@ -50,8 +51,15 @@ const App = () => {
     const [news, setNews] = useState([]);
     const [api, setApi] = useState(new Api(token));
 
+    const [product, setProduct] = useState({});
+
+
+    const [modalReviewActive, setModalReviewActive] = useState(false);
+    const [editProductFormActive, setEditProductFormActive] = useState(false);
+    
+    
     useEffect(() => {
-        fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=6c7fc5e6a754429ab47063a1b1a54774")
+        fetch("https://newsapi.org/v2/everything?q=собаки&sources=lenta&apiKey=be9b1151be0141c5b61c218f2f2e54ce")
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -94,6 +102,9 @@ const App = () => {
         console.log("u", user);
     }, [user]);
 
+
+    
+
     return (
         <Ctx.Provider value={{
             goods: goods,
@@ -104,7 +115,17 @@ const App = () => {
             setText,
             userId,
             token,
-            api
+            api,
+            modalReviewActive,
+            setModalReviewActive,
+            editProductFormActive,
+            setEditProductFormActive
+                  
+          
+          
+           
+            
+           
         }}>
             <Header 
                 user={user} 

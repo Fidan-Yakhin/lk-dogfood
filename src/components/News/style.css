@@ -1,13 +1,13 @@
 .news-block {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 30px;
     position: relative;
 }
 .news-block img {
     width: 100%;
     border-radius: 8px;
-    animation: slide 2000ms linear 1;
+    animation: slide 7000ms linear 1;
 }
 .news-block :last-child,
 .news-block :first-child {
@@ -23,7 +23,7 @@
 .news-block :first-child {
     left: 0;
     transform: translate(calc(-100%), 0);
-    animation: slideFirst 7000ms linear 1;
+    animation: slideFirst 3000ms linear 1;
 
 }
 @keyframes slide {
