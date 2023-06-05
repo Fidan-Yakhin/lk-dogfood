@@ -1,0 +1,121 @@
+.card {
+    padding: 20px;
+    display: grid;
+    
+    gap: 10px;
+    background-color: #fff;
+    color: #161616;
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    align-content: space-between;
+    
+}
+.card__img {
+    height: 100px;
+    justify-self: center;
+}
+.card__img2 {
+    height: 100px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+}
+.card__btn {
+    border: none;
+    outline: none;
+    height: 30px;
+    background-color: rgb(180, 245, 28);
+    color: #080808;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.card__btn:hover {
+    background-color: #777;
+}
+.card__discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: pink;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+.card__like {
+    color: crimson;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 980px) {
+
+    .card {
+       
+        padding: 4px;
+        display: grid;
+        
+        gap: 10px;
+        background-color: white;
+        color: #222;
+        border-radius: 4px;
+        text-align: center;
+        position: relative;
+        align-content: space-between;
+        grid-column: span 1;
+    }
+    
+    .card__img {
+        height: 100px;
+        justify-self: center;
+    }
+    
+    .card__btn {
+        border: none;
+        outline: none;
+        height: 10%;
+        background-color: #FFE44D;
+        color: black;
+        border-radius: 1px;
+        cursor: pointer;
+        font-size: 7px;
+        
+    }
+    
+    .card__btn:hover {
+        background-color: #777;
+    }
+    
+    .card__discount {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: pink;
+        padding: 5px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .card__like {
+        color: crimson;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .card__price {
+        font-size: small;
+        
+    }
+    
+    }

@@ -1,0 +1,40 @@
+
+
+    .promo_baner {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        border: 1px solid;
+        border-radius: 4px;
+        background-image: url("../../assets/images/fon.jpg");
+             min-height: 300px;
+    }
+    
+    
+    .promo_promo_baner {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .promo_pic_baner {
+       
+         width: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    
+    .promo_baner.big {
+        grid-column: 1 / span 4;
+    }
+    
+    .promo_baner.small {
+        grid-column-end: span 1;
+    }
+    
+    .promo_baner.default {
+        grid-column: span 2;
+    }
+    

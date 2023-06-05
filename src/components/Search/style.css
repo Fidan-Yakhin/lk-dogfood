@@ -1,0 +1,21 @@
+.search-block {
+
+	display: flex;
+	color: black;
+	border-radius: 15px;
+}
+.search input::placeholder {
+	font-size: 18px;
+	font-weight: normal;
+
+}
+.search input{
+	border-width: 15px;
+	padding-left: 20px;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	height: 40px;
+	border-radius: 30px;
+	width: 100%;
+}
