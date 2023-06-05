@@ -285,8 +285,8 @@ const Product = () => {
 
     <div className="product__add__favorites" onClick={updLike}><HeartFill /> В избранное</div>
 
-    <div className="product__delivery"><div className="product__delivery__garanty__ico"><TruckFront /></div><div className="product__delivery__garanty__text"><h3>Доставка по всему Миру!</h3><span>Доставка курьером —— от 399 ₽</span><br /><span>Доставка в пункт выдачи — от 199 ₽</span></div></div>
-    <div className="product__garanty"><div className="product__delivery__garanty__ico"><Award /></div> <div className="product__delivery__garanty__text"><h3>Гарантия качества</h3><span>Если Вам не понравилось качество нашей продукции, мы вернем деньги, либо сделаем все возможное, чтобы удовлетворить ваши нужды.</span></div></div>
+    
+    <div className="product__garanty"><div className="product__delivery__garanty__ico"><Award /></div> <div className="product__delivery__garanty__text"><h3>Гарантия качества</h3><span>Если Вам не понравилось качество нашей продукции, мы вернем деньги.</span></div></div>
 
 
 
