@@ -1,6 +1,7 @@
 import { BoxArrowLeft } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import News from "../components/News";
 import Ctx from "../context";
 import "./style.css";
 
@@ -69,6 +70,7 @@ const Profile = () => {
         </a>
         </div>
         </section>
+        <News/>
         </>)
 
 }

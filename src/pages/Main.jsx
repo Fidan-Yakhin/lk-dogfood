@@ -50,7 +50,7 @@ const Main = ({user, goods, setServerGoods, setModalActive }) => {
             <div className="container_old">
                 <span className="profile__greetings"> Войдите в аккаунт или зарегистрируйтесь!</span>
                 
-                 {/* <Link href="" onClick={logIn} title="Войти">
+                 {/* <Link href="/" onClick={logIn} title="Войти">
                 <BoxArrowInRight/> Войти
             </Link> */}
                 <PromoBaner type="lg" pic={baner_2} />

@@ -33,6 +33,7 @@
         max-height: 500px;
     }
     .container__product {
+        color: black;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
@@ -90,6 +91,7 @@
     }
 
     .product__cart__cnt {
+        
         display: flex;
         max-width: 10%;
         border-width: 0px;
@@ -102,6 +104,7 @@
     }
 
     .product__cart__cnt input::placeholder {
+        color: black;
         font-size: 40px;
         font-weight: normal;
 
@@ -230,4 +233,10 @@
     }
     .product__review__grey {
         color: #7a7a7a;
+    }
+    .basket1{
+        color: black;
+    }
+    .basket2{
+        color: black;
     }

@@ -34,6 +34,7 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import Favorites from "./pages/Favorites";
 import Add from './pages/AddProduct';
+import Basket from "./pages/Basket";
 
 const App = () => {
     // let key = "be9b1151be0141c5b61c218f2f2e54ce"
@@ -58,6 +59,16 @@ const App = () => {
     const [editProductFormActive, setEditProductFormActive] = useState(false);
     
     
+    // basket from LS =)
+    let bStore = localStorage.getItem("rockBasket");
+    // if (bStore && bStore[0] === "[" && bStore[bStore.length - 1] === "]") {
+    if (bStore) {
+        bStore = JSON.parse(bStore);
+    } else {
+        bStore = [];
+    }
+    const [basket, setBasket] = useState(bStore);
+    
     useEffect(() => {
         fetch("https://newsapi.org/v2/everything?q=собаки&sources=lenta&apiKey=be9b1151be0141c5b61c218f2f2e54ce")
             .then(res => res.json())
@@ -72,6 +83,7 @@ const App = () => {
     useEffect(() => {
         setApi(new Api(token));
     }, [token])
+    
 
     useEffect(() => {
         if (api.token) {
@@ -119,8 +131,11 @@ const App = () => {
             modalReviewActive,
             setModalReviewActive,
             editProductFormActive,
-            setEditProductFormActive
-                  
+            setEditProductFormActive,
+            product,
+            setProduct,
+            basket,
+            setBasket
           
           
            
@@ -143,6 +158,7 @@ const App = () => {
                     <Route path="/catalog" element={<Catalog
                         setServerGoods={setServerGoods}
                     />}/>
+                    
                     <Route path="/add" element={<Add/>}/>
                     <Route path="/favorites" element={<Favorites 
                         goods={goods}
@@ -153,7 +169,9 @@ const App = () => {
                     <Route path="/profile" element={
                         <Profile user={user} setUser={setUser} color="yellow"/>
                     }/>
+                    
                     <Route path="/product/:id" element={<Product/>}/>
+                    <Route path="/basket" element={<Basket/>}/>
                 </Routes>
                 {/* 
                     /v2/:gr/posts/likes/:id

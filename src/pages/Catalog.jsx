@@ -13,9 +13,9 @@ const Catalog = ({setServerGoods}) => {
     const [sort, setSort] = useState(null)
     const filterSt = {
         gridColumnEnd: "span 4",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-        gap: "5px",
+        display: "flex",
+        // gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        gap: "20px",
         
     }
     const filterCon ={
@@ -66,6 +66,7 @@ const Catalog = ({setServerGoods}) => {
             setServerGoods={setServerGoods}
         />)}   
         </div>
+        <div style={{gridColumnEnd: "span 4"}}><Pagination hk={paginate} /></div>
         </div>
     
 }

@@ -1,9 +1,11 @@
 .pagination {
+ 
     display: flex;
     justify-content: center;
     gap: 8px;
 }
 .pagination__item {
+    color: black;
     display: flex;
     justify-content: center;
     width: 30px;
@@ -12,12 +14,13 @@
     background-color: transparent;
     border-radius: 4px;
     cursor: pointer;
-    border: 1px solid silver;
+    border: 1px solid rgb(43, 22, 160);
 }
 .pagination__item:hover {
-    background-color: silver;
+    background-color: #21afd3;
 }
 .pagination__item.active {
-    background-color: #fff;
-    color: darkslateblue;
+    background-color: #21afd3;
+    color: rgb(68, 139, 61);
+  ;
 }

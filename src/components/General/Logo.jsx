@@ -2,7 +2,7 @@ import image from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 
 const Logo = () => {
-    return <Link href="/" className="logo">
+    return <Link to="/catalog" className="logo">
         <img src={image} alt="DogFood"/>
         <span>RockDog</span>
     </Link>

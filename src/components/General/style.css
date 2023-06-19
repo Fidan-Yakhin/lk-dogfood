@@ -10,7 +10,7 @@
 }
 
 header {
-    background-color:  rgb(230, 245, 28);
+    background-color:  rgba(34, 161, 211, 0.719);
     color: #000;
     display: flex;
     align-items: center;
@@ -99,7 +99,7 @@ header {
 
 
 footer {
-    background-color: rgb(230, 245, 28);
+    background-color: rgba(34, 161, 211, 0.719);
     color: #000;
     display: flex;
     align-items: center;

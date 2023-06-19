@@ -1,6 +1,6 @@
 import {useParams, useNavigate} from "react-router-dom";
 import {useState, useEffect, useContext} from "react";
-import {Trash} from "react-bootstrap-icons";
+// import {Trash} from "react-bootstrap-icons";
 import { Percent, HeartFill, TruckFront, Award, StarFill, StarHalf, Star } from "react-bootstrap-icons";
 import Ctx from "../context";
 
@@ -8,17 +8,21 @@ import Review from "../components/Review";
 
 import Loader from "../components/Loader";
 
-import ReviewModal from "../components/ReviewModal"
+import ReviewModal from "../components/ReviewModal";
 
 import EditProductForm from "../components/EditProductFrom";
 
-
+import {  Row,  Form, Button, FormLabel } from "react-bootstrap";
+import Context from "../context"
 
 const Product = () => {
     const [product, setProduct] = useState({});
+    const { basket, setBasket } = useContext(Context)
     const {id} = useParams();
     const navigate = useNavigate();
     const {userId, setServerGoods, api} = useContext(Ctx);
+    const [basketProdBtn, setBasketProdBtn] = useState(true)
+    const [stockProd, setStockProd] = useState(1)
 
 
     const { token } = useContext(Ctx);
@@ -37,7 +41,15 @@ const Product = () => {
 
     const [isLike, setIsLike] = useState(product?.likes?.includes(localStorage.getItem("rockId")));
     const [reviewRating, setRatingStat] = useState(0);
-
+useEffect(() => {
+		if (basket?.findIndex(e => e._id === id) !== -1) {
+			setBasketProdBtn(false) /* false это блокировка Кнопки*/
+			basket?.map(e => e._id === id ? setStockProd(e.stockinBasket) : 1)
+		}
+		else {
+			setBasketProdBtn(true)
+		}
+	}, [basket, product?._id, navigate]);
   
 
     useEffect(() => {
@@ -275,13 +287,61 @@ const Product = () => {
         </div>
     }
 
-    <div className="product__add__cart">
+    {/* <div className="product__add__cart">
 
         <input type="number" min="0" className="product__cart__cnt" placeholder="1" />
 
         <button className="product__cart__btn">В корзину</button>
-    </div>
-
+        
+    </div> */}
+    
+    <Row className="d-flex justify-content-center justify-content-md-start">
+						<Form.Group style={{ width: "300px" }}>
+							{basketProdBtn
+								?
+								<Row className="d-flex justify-content-around">
+									<FormLabel>Введите количество:&nbsp;</FormLabel>
+									<Form.Control style={{ width: "90px" }} className="inputCount" type="Number" placeholder="1" onChange={(e) => {
+										if (product?.stock >= e.currentTarget.value && e.currentTarget.value >= 1) {
+											setStockProd(parseInt(e.currentTarget.value))
+										} else {
+											setStockProd(product?.stock)
+										}
+									}
+									} value={stockProd} />
+									<Button style={{ width: "200px" }} variant="success" className="btnCount" size="xs" onClick={e => {
+										e.stopPropagation();
+										e.preventDefault()
+										setBasket(old => [...old, { "_id": product?._id, "name": product?.name, "price": product?.price, "img": product?.pictures, "stock": product?.stock, "discount": product?.discount, "stockinBasket": stockProd }]);
+									}}>Купить</Button>
+								</Row>
+								:
+								<Row className="d-flex justify-content-around">
+									<FormLabel>измените в корзине количество:&nbsp;</FormLabel>
+									<Form.Control style={{ width: "90px" }} className="inputCount" type="number" value={stockProd} placeholder="1" onChange={(e) => {
+										if (product?.stock >= e.currentTarget.value && e.currentTarget.value >= 1) {
+											setStockProd(parseInt(e.currentTarget.value))
+											basket?.map(x => {
+												x._id === product?._id
+													?
+													x.stockinBasket = parseInt(e.currentTarget.value)
+													:
+													x.stockinBasket = 1
+											})
+										} else {
+											setStockProd(product?.stock)
+										}
+									}
+									} />
+									<Button style={{ width: "200px" }} variant="danger" className="btnCount" size="xs"
+										onClick={() => {
+											setBasket(basket?.filter(x => x._id !== product?._id))
+										}
+										}>Удалить из корзины</Button>
+								</Row>
+							}
+						</Form.Group>
+					</Row>
 
     <div className="product__add__favorites" onClick={updLike}><HeartFill /> В избранное</div>
 
@@ -328,7 +388,7 @@ const Product = () => {
 }
 
 </section>
-<ReviewModal />
+<ReviewModal/>
 <EditProductForm/>
 
   

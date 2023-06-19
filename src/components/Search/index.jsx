@@ -45,13 +45,13 @@ const Search = ({arr}) => {
 
 	return (
 		<div className="search-block">
-			{/* <input type="search" value={text} onChange={searchByText}/> */}
+			<input type="search" value={text} onChange={searchByText}/>
 			
 			{/* <input type="search" className="search__common" placeholder="Поиск по сайту" value={text} onChange={searchByText} />{/*<input 
 				type="search" 
 				value={text} 
 				onChange={(e) => setText(e.target.value)}/>*/}
-			{/* <button onClick={click}>Поиск</button> */}
+			<button onClick={click}>Поиск</button>
 			
 			{/*<div>{text}, {n}, {count}</div>*/}
 			{/* <div>По вашему запросу « {text} » найдено {quantity} подходящих товаров</div> */}
