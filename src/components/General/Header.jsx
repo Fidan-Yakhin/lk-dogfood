@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import Context from "../../context"
-// import Search from "../Search";
+import Search from "../Search";
 
 
 const Header = ({user, setModalActive, serverGoods}) => {
@@ -20,8 +20,8 @@ const Header = ({user, setModalActive, serverGoods}) => {
     const navigate = useNavigate();
 
     const [likeCnt, setLikeCnt] = useState(0);
-    const [basketCnt, setBasketCnt] = useState(0);
-    const {basketArr } = useContext(Context);
+    // const [basketCnt, setBasketCnt] = useState(0);
+    const {basket} = useContext(Context);
    
     useEffect(() => {
         // Фильтруем только те товары, у которых в лайках есть id нашего пользователя - id берем из ls, ибо мы про него забыли))
@@ -29,9 +29,9 @@ const Header = ({user, setModalActive, serverGoods}) => {
     },[serverGoods]);
 
 
-    useEffect(() => {
-		setBasketCnt(basketArr?.length)
-	}, [basketArr]);
+    // useEffect(() => {
+	// 	setBasketCnt(basketArr?.length)
+	// }, [basketArr]);
 
     const logIn = (e) => {
         e.preventDefault();
@@ -42,7 +42,7 @@ const Header = ({user, setModalActive, serverGoods}) => {
     }
     return <header>
         <Logo/>
-        {/* <Search arr={serverGoods} /> */}
+        <Search arr={serverGoods} />
         <div className="search"></div>
         <nav className="header__menu">
             {/* Если пользователь === true */}
@@ -60,7 +60,7 @@ const Header = ({user, setModalActive, serverGoods}) => {
                 </Link>
                 <Link to="/basket" title="Корзина" className="badge-el">
                     <Cart4/>
-                    <span className="badge-item">{basketCnt}</span>
+                    <span className="badge-item">{basket && basket.length > 0 ? basket.length : null}</span>
                 </Link>
                 <Link to="/profile" title="Профиль">
                     <PersonSquare/>

@@ -51,13 +51,13 @@ const Search = ({arr}) => {
 				type="search" 
 				value={text} 
 				onChange={(e) => setText(e.target.value)}/>*/}
-			<button onClick={click}>Поиск</button>
+			{/* <button onClick={click}>Поиск</button> */}
 			
 			{/*<div>{text}, {n}, {count}</div>*/}
 			{/* <div>По вашему запросу « {text} » найдено {quantity} подходящих товаров</div> */}
 		
 			
-                <input type="search" placeholder="Поиск" value={text} onChange={searchByText} />
+                {/* <input type="search" placeholder="Поиск" value={text} onChange={searchByText} /> */}
       
 		</div>
 	)

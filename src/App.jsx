@@ -172,6 +172,7 @@ const App = () => {
                     
                     <Route path="/product/:id" element={<Product/>}/>
                     <Route path="/basket" element={<Basket/>}/>
+                    <Route path="/basket" element={<Basket/>}/>
                 </Routes>
                 {/* 
                     /v2/:gr/posts/likes/:id

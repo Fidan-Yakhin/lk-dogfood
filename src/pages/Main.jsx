@@ -26,7 +26,7 @@ const Main = ({user, goods, setServerGoods, setModalActive }) => {
     //     setModalActive(true);
     //     navigate("/profile")
     // }
-    return (<>
+    return <>
 
         {user && <>
             <h1>Главная</h1>
@@ -64,7 +64,7 @@ const Main = ({user, goods, setServerGoods, setModalActive }) => {
         </>}
 
     </>
-    )
+    
 }
 
 export default Main;
