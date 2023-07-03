@@ -1,7 +1,10 @@
+.old{
+    color: black;
+}
 .news-block {
     display: grid;
     grid-template-columns: repeat(4, 2fr);
-    gap: 20px;
+    gap: 5px;
     position: relative;
 }
 .news-block img {
@@ -36,8 +39,8 @@
     100% {
         transform: translate(calc(-100% - 20px), 0);
     }
-} */
-/* @keyframes slideLast {
+} 
+ @keyframes slideLast { 
     0% {
         transform: translate(calc(100%), 0);
     }

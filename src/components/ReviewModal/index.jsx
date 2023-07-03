@@ -1,11 +1,16 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import "./style.css";
-
+import { useContext } from "react";
 import Ctx from "../../context"
 
 const ReviewModal = () => {
 
-    const {token, modalReviewActive, setModalReviewActive, product, setProduct } = useContext(Ctx);
+    const { setModalReviewActive } = useContext(Ctx);
+    const { modalReviewActive } = useContext(Ctx);
+    const { token } = useContext(Ctx);
+    const { product } = useContext(Ctx);
+    const { setProduct } = useContext(Ctx);
+
     const [reviewText, setReviewText] = useState("");
     const [reviewStars, setReviewStars] = useState("");
 
@@ -24,7 +29,7 @@ const ReviewModal = () => {
             body: JSON.stringify(body)
         })
         let data = await res.json()
-        console.log(data);
+  
         setModalReviewActive(false);
         setProduct(data);  
     }
@@ -33,9 +38,9 @@ const ReviewModal = () => {
 
 
 
-    return (<div className="modal__review" style={{ display: modalReviewActive ? "flex" : "none" }}>
-        <div className="review">
-            <button className="close__btn" onClick={() => setModalReviewActive(false)}>Закрыть окно</button>
+    return <div className="memodal__review__wrapper" style={{ display: modalReviewActive ? "flex" : "none" }}>
+        <div className="memodal">
+            <button className="close_btn" onClick={() => setModalReviewActive(false)}>Закрыть окно</button>
             <h3>Отзыв на товар </h3>
             <span>{product.name}</span>
             <hr/>
@@ -54,7 +59,7 @@ const ReviewModal = () => {
                 <button type="submit">Отправить</button>
             </form>
         </div>
-    </div>)
+    </div>
 }
 
 export default ReviewModal;

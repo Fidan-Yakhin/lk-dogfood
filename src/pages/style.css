@@ -6,6 +6,9 @@
         grid-template-rows: repeat(10, auto);
         color: black;
     }
+    .container_old {
+        color: black;
+    }
 
     .product_name {
        

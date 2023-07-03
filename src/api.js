@@ -97,6 +97,38 @@ class Api {
             body: this.setBody(body)
         }).then(res => res.json())
     }
+
+
+    
+    setReview(id, body) {
+        return fetch(`${this.path}/products/review/${id}`, {
+            method: "POST",
+            headers: this.setHeaders(true),
+            body: JSON.stringify(body)
+        }).then(res => res.json())
+    }
+    delReview(id, r_id) {
+        return fetch(`${this.path}/products/review/${id}/${r_id}`, {
+            method: "DELETE",
+            headers: this.setHeaders()
+        }).then(res => res.json())
+    }
+    getReview(id) {
+        return fetch(`${this.path}/products/review/${id}`, {
+            headers: this.setHeaders()
+        }).then(res => res.json())
+    }
+
+    getUsers() {
+        return fetch(`${this.path}/users`, {
+            headers: this.setHeaders()
+        }).then(res => res.json())
+    }
+    getSingleUser(id) {
+        return fetch(`${this.path}/users/${id}`, {
+            headers: this.setHeaders()
+        }).then(res => res.json())
+    }
  }
 
 export default Api;

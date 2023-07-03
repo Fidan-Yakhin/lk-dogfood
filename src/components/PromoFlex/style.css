@@ -1,0 +1,55 @@
+
+    .promo_flex {
+        color:black;
+        padding: 20px;
+        border: 1px solid;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* background-image: url("../../assets/images/banner_1_resize.jpg"); */
+        background-size: auto;
+        min-height: 300px;
+    }
+    
+    
+    .promo_promo_flex {
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+        background-size: 0%;
+        justify-content: center;
+    }
+    
+    .promo_pic_flex {
+        display: flex;
+        width: 80%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position:  center;
+    }
+    
+    .banner_header_flex {
+        display: flex;
+        font-size: 30px;
+    }
+    
+    .banner_text_flex {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 25px;
+    
+    }
+    
+    .promo_flex.big {
+        grid-column: 1 / span 4;
+        /* span 4 - объединить, охватить - увеличить количество занимаемых столбцов до 4*/
+    }
+    
+    .promo_flex.small {
+        grid-column-end: span 1;
+    }
+    
+    .promo_flex.default {
+        grid-column: span 2;
+    }

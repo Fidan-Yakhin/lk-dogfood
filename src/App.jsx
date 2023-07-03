@@ -137,10 +137,6 @@ const App = () => {
             basket,
             setBasket
           
-          
-           
-            
-           
         }}>
             <Header 
                 user={user} 
@@ -149,12 +145,12 @@ const App = () => {
             />
             
             <main>
-                {/* <Search arr={serverGoods} /> */}
+                {/* <Search arr={serverGoods} />  */}
                 {/* 
                     SPA - Single Page Application (одностраничное)
                 */}
-                <Routes>
-                    <Route path="/" element={<Main/>}/>
+                 <Routes> 
+                    <Route path="/main" element={<Main/>}/>
                     <Route path="/catalog" element={<Catalog
                         setServerGoods={setServerGoods}
                     />}/>
@@ -174,6 +170,30 @@ const App = () => {
                     <Route path="/basket" element={<Basket/>}/>
                     <Route path="/basket" element={<Basket/>}/>
                 </Routes>
+                {/* <Routes> */}
+{/* 
+{!user && <>
+    <Route path="/main" element={<Main />} />
+
+</>}
+
+{user && <>
+    <Route path="/main" element={<Main />} />
+    {/*<Route path="/add" element={<Add />}/>
+
+    <Route path="/catalog" element={<Catalog />} />
+
+    <Route path="/draft" element={<Draft />} />
+
+    <Route path="/profile" element={<Profile />} />
+
+    <Route path="/product/:id" element={<Product />} />
+
+    <Route path="/favorites" element={<Favorites />} />
+</>
+
+</Routes>*/}
+
                 {/* 
                     /v2/:gr/posts/likes/:id
                     /v2/group-12/posts/likes/83745613476812

@@ -25,14 +25,14 @@ const News = () => {
 
     return <>
         <div>
-            <h2>Новости</h2>
+            <h2 className="old">Новости</h2>
             <div className="news-block">
                 {data.slice(0, 6).map((el,i) => <img
                     key={i}
                     src={el.urlToImage}
                     alt={el.title}
                     style={{
-                        animation: "slide 2000ms linear 1"
+                        animation: "slide 4000ms linear 1"
                     }}
                 />)}
             </div>

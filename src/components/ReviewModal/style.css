@@ -1,11 +1,14 @@
 
 
 
-    .modal__review {
+
+/*Десктоп версия*/
+
+
+    .memodal__review__wrapper {
         position: fixed;
         background-color: #fff9;
-      /* color: black; */
-        top: 0;
+        top: 10px;
         bottom: 0;
         left: 0;
         right: 0;
@@ -16,12 +19,11 @@
 
     }
 
-    .review {
-        position: relative;
-        max-width: calc(100% - 60px);
-        max-height: calc(100% - 60px);
+    .memodal {
+        max-width: calc(100% - 60 px);
+        max-height: calc(100% - 60 px);
         width: 400px;
-        background-color: #24d1f0;
+        background-color: #4ddbff85;
         color: #000;
         padding: 20px;
         border-radius: 4px;
@@ -29,26 +31,23 @@
         z-index: 3;
     }
 
-    .review h3 {
-        
+    .memodal h3 {
         margin-bottom: 20px;
     }
 
 
     form {
-        
         display: grid;
         gap: 20px;
     }
 
-    .modal-ctl {
+    .memodal-ctl {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 
-    .modal-link {
-        
+    .memodal-link {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -56,7 +55,7 @@
         cursor: pointer;
     }
 
-    .modal-link:hover {
+    .memodal-link:hover {
         background-color: silver;
         color: black;
     }
@@ -66,8 +65,8 @@
         gap: 5px;
     }
 
-    .close__btn {
+    .close_btn {
         position: relative;
         top: 0px;
-        right: 160px;
+       right: 0px;
     }
